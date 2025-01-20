@@ -26,8 +26,8 @@ public class SauceLabsLoginPage extends BasePage{
 		return this;
 	}
 	
-	public String getTitle() {
-		return DriverManager.getDriver().getTitle();
+	public String getCurrentURL() {
+		return DriverManager.getDriver().getCurrentUrl();
 	}
 	
 	

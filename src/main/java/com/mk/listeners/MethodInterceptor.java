@@ -10,58 +10,36 @@ import org.testng.ITestContext;
 
 import com.mk.utils.ExcelUtils;
 
-public class MethodInterceptor implements IMethodInterceptor{
+public class MethodInterceptor implements IMethodInterceptor {
 
 	@Override
 	public List<IMethodInstance> intercept(List<IMethodInstance> methods, ITestContext context) {
-		
-		List<IMethodInstance> result = new ArrayList<IMethodInstance>();
-		
-		
-		List<Map<String, String>> a = ExcelUtils.getDataAsList("Sheet1");
-		
-//		for(int i =0;i<methods.size();i++) {
-//			for(int j=0;j<a.size();j++) {
-//				System.out.println(a.get(0).get("testName"));
-//				if(methods.get(i).getMethod().getMethodName().equalsIgnoreCase(a.get(j).get("testName").trim())) {
-//					if(a.get(j).get("execute").trim().equalsIgnoreCase("yes")) {
-//						System.out.println("apple");
-//						methods.get(i).getMethod().setInvocationCount(Integer.parseInt(a.get(j).get("count").trim()));
-//						methods.get(i).getMethod().setPriority(Integer.parseInt(a.get(j).get("priority").trim()));
-//						result.add(methods.get(i));
-//					}
-//				}
-//			}
-//			
-//		}
-		
-		
-	    for (IMethodInstance method : methods) {
-            for (Map<String, String> data : a) {
-                String excelTestName = data.get("testName").trim();
-                String methodName = method.getMethod().getMethodName().trim();
 
-                System.out.println("Method Name: " + methodName);
-                System.out.println("Excel Test Name: " + excelTestName);
+		List<Map<String, String>> list = null;
+		try {
+			list = ExcelUtils.getDataAsList("testRunner");
+		} catch (Exception e) {
 
-                if (methodName.equalsIgnoreCase(excelTestName)) {
-                    if ("yes".equalsIgnoreCase(data.get("execute"))) {
-                        System.out.println("Executing test: " + methodName);
-                        System.out.println("Adding test to result: " + methodName);
-                        // Set invocation count and priority
-                        method.getMethod().setInvocationCount((int)Double.parseDouble(data.get("count")));
-                        method.getMethod().setPriority((int)Double.parseDouble(data.get("priority")));
+			e.printStackTrace();
+		}
+		List<IMethodInstance> result = new ArrayList<>();
 
-                        result.add(method);
-                    }
-                }
-            }
-        }
-	    
+		for (int i = 0; i < methods.size(); i++) {
+			for (int j = 0; j < list.size(); j++) {
+				if (methods.get(i).getMethod().getMethodName().equalsIgnoreCase(list.get(j).get("testName"))
+						&& list.get(j).get("execute").equalsIgnoreCase("yes")) {
+					// methods.get(i).getMethod().setDescription((list.get(j).get("testdescription")));
+					// methods.get(i).getMethod().setInvocationCount(Integer.parseInt(list.get(j).get("count")));
+					methods.get(i).getMethod().setPriority(Integer.parseInt(list.get(j).get("priority")));
+					result.add(methods.get(i));
+					// Break is Important or else the data read will be inconsistent
+					break;
+				}
+
+			}
+		}
+
 		return result;
 	}
-	
-
-
 
 }

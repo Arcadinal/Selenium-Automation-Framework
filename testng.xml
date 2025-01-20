@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Suite" parallel="true">
-	<listeners>
-		<listener class-name="com.mk.listeners.ListenerClass" />
-		<listener class-name = "com.mk.listeners.MethodInterceptor"/>
-	</listeners>
-	<test  thread-count = "1" name="loginTest" parallel="tests">
-		<classes>
-			<class name="com.mk.tests.LoginTest" />
-		</classes>
-	</test> <!-- Test -->
-	<!-- <test thread-count="1" name="Test1">
-		<classes>
-			<class name="com.mk.tests.LoginTest" />
-		</classes>
-	</test>
- --></suite> <!-- Suite -->
+<suite thread-count="2" parallel="methods" name="Suite">
+<listeners>
+	<listener class-name = "com.mk.listeners.ListenerClass"/>
+	<listener class-name = "com.mk.listeners.MethodInterceptor"/>
+</listeners>
+  <test thread-count="2" parallel="methods" name="Test">
+    <classes>
+      <class name="com.mk.tests.LoginTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

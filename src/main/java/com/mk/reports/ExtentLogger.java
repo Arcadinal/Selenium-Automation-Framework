@@ -15,10 +15,12 @@ public class ExtentLogger {
 	
 	public static void fail(String message) {
 		ExtentManagersClass.getExtentTest().fail(MarkupHelper.createLabel(message,ExtentColor.RED));
-		ExtentManagersClass.getExtentTest()
-		.fail(MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getScreenShot()).build());
 	}
 	
+	public static void failWithScreenshot() {
+		ExtentManagersClass.getExtentTest().fail(MediaEntityBuilder.createScreenCaptureFromBase64String(ScreenshotUtils.getScreenShot()).build());
+	}
+	 
 	public static void skip(String message) {
 		ExtentManagersClass.getExtentTest().skip(MarkupHelper.createLabel(message, ExtentColor.ORANGE));
 	}

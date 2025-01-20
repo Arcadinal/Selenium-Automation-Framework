@@ -12,7 +12,9 @@ public class FrameworkConstants {
 	private static final String GRIDURL = "http://localhost:4444/wd/hub";
 	private static final int EXPLICITWAIT = 10;
 	private static final String EXTENTREPORTDIR = System.getProperty("user.dir")+"/test-output/extentReports/";
-	private static final String TESTRUNNER = "D:\\SeleniumAutomationFramework\\SeleniumAutomation\\src\\test\\resources\\excel\\testRunner.xlsx";
+	private static final String TESTRUNNERSHEET = "testRunner";
+	private static final String TESTDATASHEET = "testData";
+	private static final String EXCELFILEPATH = "D:\\SeleniumAutomationFramework\\SeleniumAutomation\\src\\test\\resources\\excel\\TestRunnerData.xlsx";
 	private static final String EXTENTREPORTFILEPATH;
 	
 	
@@ -46,7 +48,15 @@ public class FrameworkConstants {
 		return EXTENTREPORTFILEPATH;
 	}
 
-	public static String getTestrunner() {
-		return TESTRUNNER;
+	public static String getTestrunnersheet() {
+		return TESTRUNNERSHEET;
+	}
+
+	public static String getTestdatasheet() {
+		return TESTDATASHEET;
+	}
+
+	public static String getExcelfilepath() {
+		return EXCELFILEPATH;
 	}
 }
