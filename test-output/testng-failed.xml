@@ -10,7 +10,7 @@
       <class name="com.mk.tests.LoginTest">
         <methods>
           <include name="flush"/>
-          <include name="loginTest" invocation-numbers="2"/>
+          <include name="loginTest" invocation-numbers="2 3"/>
           <include name="setup"/>
         </methods>
       </class> <!-- com.mk.tests.LoginTest -->

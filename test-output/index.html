@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">3 methods, 1 failed,   2 passed</span>
+                    <span class="method-stats">4 methods, 2 failed,   2 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -103,7 +103,12 @@
                     <div class="method-list-content failed suite-Suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)">loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)">loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)">loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Suite -->
@@ -117,12 +122,12 @@
                     <div class="method-list-content passed suite-Suite">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)">loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)">loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)">loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Suite" title="com.mk.tests.LoginTest" class="method navigator-link" hash-for-method="loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)">loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Suite -->
@@ -145,10 +150,29 @@
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)">
-                  </a> <!-- loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...) -->
+                  <a name="loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)">
+                  </a> <!-- loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...) -->
                   <span class="method-name">loginTest</span>
-                  <span class="parameters">({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=locker_out_user})</span>
+                  <span class="parameters">({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=locked_out_user})</span>
+                  <div class="stack-trace">java.lang.AssertionError: 
+Expecting actual:
+  &quot;https://www.saucedemo.com/&quot;
+to contain:
+  &quot;inventory&quot; 
+	at com.mk.tests.LoginTest.loginTest(LoginTest.java:21)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+... Removed 7 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)">
+                  </a> <!-- loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...) -->
+                  <span class="method-name">loginTest</span>
+                  <span class="parameters">({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=locked_out_user})</span>
                   <div class="stack-trace">java.lang.AssertionError: 
 Expecting actual:
   &quot;https://www.saucedemo.com/&quot;
@@ -172,18 +196,18 @@ to contain:
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)">
-                  </a> <!-- loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...) -->
+                  <a name="loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)">
+                  </a> <!-- loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...) -->
                   <span class="method-name">loginTest</span>
-                  <span class="parameters">({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=problem_user})</span>
+                  <span class="parameters">({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=standard_user})</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)">
-                  </a> <!-- loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...) -->
+                  <a name="loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)">
+                  </a> <!-- loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...) -->
                   <span class="method-name">loginTest</span>
-                  <span class="parameters">({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=standard_user})</span>
+                  <span class="parameters">({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=problem_user})</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -244,24 +268,28 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(3);
+data.addRows(4);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'loginTest')
 data.setCell(0, 2, 'com.mk.tests.LoginTest')
-data.setCell(0, 3, 1480);
+data.setCell(0, 3, 1536);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'loginTest')
 data.setCell(1, 2, 'com.mk.tests.LoginTest')
-data.setCell(1, 3, 616);
+data.setCell(1, 3, 1510);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'loginTest')
 data.setCell(2, 2, 'com.mk.tests.LoginTest')
-data.setCell(2, 3, 438);
+data.setCell(2, 3, 1219);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'loginTest')
+data.setCell(3, 2, 'com.mk.tests.LoginTest')
+data.setCell(3, 3, 602);
 window.suiteTableData['Suite']= { tableData: data, tableDiv: 'times-div-Suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 seconds</span>
+              <span class="suite-total-time">Total running time: 4 seconds</span>
               <div id="times-div-Suite">
               </div> <!-- times-div-Suite -->
             </div> <!-- times-div -->
@@ -289,42 +317,56 @@ return data;
             <div class="chronological-class">
               <div class="chronological-class-name">com.mk.tests.LoginTest</div> <!-- chronological-class-name -->
               <div class="configuration-method before">
-                <span class="method-name">setup</span>
+                <span class="method-name">setup([{password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succ...)</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-method before -->
               <div class="configuration-method before">
-                <span class="method-name">setup</span>
+                <span class="method-name">setup([{password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succ...)</span>
                 <span class="method-start">2 ms</span>
               </div> <!-- configuration-method before -->
               <div class="configuration-method before">
-                <span class="method-name">setup</span>
-                <span class="method-start">4 ms</span>
+                <span class="method-name">setup([{password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can suc...)</span>
+                <span class="method-start">3 ms</span>
               </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setup([{password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can suc...)</span>
+                <span class="method-start">3 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)</span>
+                <span class="method-start">3019 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">flush</span>
+                <span class="method-start">4570 ms</span>
+              </div> <!-- configuration-method after -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)</span>
-                <span class="method-start">3083 ms</span>
+                <span class="method-name">loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)</span>
+                <span class="method-start">10603 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <span class="method-name">loginTest({password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can succe...)</span>
+                <span class="method-start">11598 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">flush</span>
-                <span class="method-start">3937 ms</span>
+                <span class="method-start">12316 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <span class="method-name">flush</span>
+                <span class="method-start">12820 ms</span>
               </div> <!-- configuration-method after -->
               <div class="test-method">
-                <span class="method-name">loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)</span>
-                <span class="method-start">7017 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">loginTest({password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can succ...)</span>
+                <span class="method-start">19386 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">flush</span>
-                <span class="method-start">8502 ms</span>
-              </div> <!-- configuration-method after -->
-              <div class="test-method">
-                <span class="method-name">loginTest({password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, p...)</span>
-                <span class="method-start">9234 ms</span>
-              </div> <!-- test-method -->
-              <div class="configuration-method after">
-                <span class="method-name">flush</span>
-                <span class="method-start">9677 ms</span>
+                <span class="method-start">20049 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

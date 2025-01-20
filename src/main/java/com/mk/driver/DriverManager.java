@@ -12,80 +12,65 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import com.mk.constants.FrameworkConstants;
 import com.mk.enums.ConfigProperties;
 import com.mk.exceptions.FrameworkException;
 
 public class DriverManager {
 
-	private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
-	private static String CONFIG_PATH = FrameworkConstants.getConfigfilepath();
-	private static String GRIDURL = FrameworkConstants.getGridurl();
-	private static final Map<String, String> CONFIGMAP = new HashMap<>();
+	private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
+	private static final Map<String, String> CONFIGMAP = new HashMap<String, String>();
+	private static final String GRIDURL = "http://localhost:4444/wd/hub";
 
-	// Private constructor
-
-	private DriverManager() {
-		throw new IllegalStateException("Utility class- cannot be instantiated");
-	}
-
-	private static Properties properties = new Properties();
-
-	/*
-	 * Instead of using a method we are using static block Assume you have 100
-	 * properties then the method will open the file 100 times but if we put it in
-	 * static block it will intialized once the jvm calls the class and cache the
-	 * data from properties file.
-	 */
-	
 	static {
 		try {
-			FileInputStream file = new FileInputStream(CONFIG_PATH);
+			FileInputStream file = new FileInputStream(
+					System.getProperty("user.dir") + "/src/test/resources/config/config.properties");
+			Properties properties = new Properties();
 			properties.load(file);
-
 			properties.forEach(
 					(key, value) -> CONFIGMAP.put(String.valueOf(key).toLowerCase(), String.valueOf(value).trim()));
-
 		} catch (IOException e) {
-			throw new FrameworkException("Failed to load configuration file",e);
+			throw new FrameworkException("Failed to load config file!");
 		}
 	}
 
-	public static String getValue(ConfigProperties key) {
-		if (Objects.isNull(CONFIGMAP.get(key.toString().toLowerCase()))
-				|| Objects.isNull(key.toString().toLowerCase())) {
-			throw new IllegalArgumentException(
-					"Property name " + key + " is not found. Please Check config.properties");
-		}
-		return CONFIGMAP.get(key.name().toLowerCase());
+	public static WebDriver getDriver() {
+		return DRIVER.get();
 	}
 
-	public static WebDriver setDriver() {
-		if (Objects.isNull(driverThreadLocal.get())) {
+	public static void setDriver(String browser) {
+		if (Objects.isNull(DRIVER.get())) {
 			synchronized (DriverManager.class) {
-				if (driverThreadLocal.get() == null) {
-					if ("local".equalsIgnoreCase(getValue(ConfigProperties.ENV))) {
-						System.out.println("Using Local for execution");
-						switch (getValue(ConfigProperties.DRIVER).toLowerCase()) {
+				if (DRIVER.get() == null) {
+					if ("local".equalsIgnoreCase(getEnvValue(ConfigProperties.ENV))) {
+						System.out.println("Using Local Execution!!");
+						switch (browser.toLowerCase()) {
 						case "chrome":
-							driverThreadLocal.set(new ChromeDriver());
+							DRIVER.set(new ChromeDriver());
+							break;
+						case "firefox":
+							DRIVER.set(new FirefoxDriver());
 							break;
 						case "edge":
-							driverThreadLocal.set(new EdgeDriver());
+							DRIVER.set(new EdgeDriver());
 							break;
 						default:
-							throw new FrameworkException("Unsuported Driver");
+							throw new FrameworkException("unsupported browser: " + browser);
 						}
-					} else if ("remote".equalsIgnoreCase(getValue(ConfigProperties.ENV))) {
-						switch (getValue(ConfigProperties.DRIVER).toLowerCase()) {
+					} else if ("remote".equalsIgnoreCase(getEnvValue(ConfigProperties.ENV))) {
+						switch (browser.toLowerCase()) {
 						case "chrome":
-							driverThreadLocal.set(createRemoteWebDriver(chromeCapabilities()));
+							DRIVER.set(createRemoteWebDriver(chromeCapabilities()));
 							break;
 						case "edge":
-							driverThreadLocal.set(createRemoteWebDriver(edgeCapabilities()));
+							DRIVER.set(createRemoteWebDriver(edgeCapabilities()));
+							break;
+						case "firefox":
+							DRIVER.set(createRemoteWebDriver(firefoxCapabilities()));
 							break;
 						default:
 							throw new FrameworkException("Unsuported browser");
@@ -94,16 +79,20 @@ public class DriverManager {
 				}
 			}
 		}
-		return driverThreadLocal.get();
 	}
 
-	public static WebDriver getDriver() {
-		return setDriver();
+	private static String getEnvValue(ConfigProperties key) {
+		if (Objects.isNull(CONFIGMAP.get(key.toString().toLowerCase()))
+				|| Objects.isNull(key.toString().toLowerCase())) {
+			throw new IllegalArgumentException(
+					"Property name " + key + " is not found. Please Check config.properties");
+		}
+		return CONFIGMAP.get(key.name().toLowerCase());
 	}
 
 	private static WebDriver createRemoteWebDriver(DesiredCapabilities cp) {
 		try {
-			return new RemoteWebDriver(new URL(GRIDURL), cp);
+			return new RemoteWebDriver(new URL(getEnvValue(ConfigProperties.SELENIUMGRIDURL)), cp);
 		} catch (MalformedURLException e) {
 			throw new FrameworkException("Invalid grid url: " + GRIDURL, e);
 		}
@@ -128,9 +117,9 @@ public class DriverManager {
 	}
 
 	public static void quitDriver() {
-		if (driverThreadLocal.get() != null) {
-			driverThreadLocal.get().quit();
-			driverThreadLocal.remove();
+		if (DRIVER.get() != null) {
+			DRIVER.get().quit();
+			DRIVER.remove();
 		}
 	}
 

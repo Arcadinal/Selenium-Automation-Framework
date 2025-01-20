@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>2/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>2/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Mon Jan 20 11:20:33 IST 2025</td>
+<td>Started on:</td><td>Mon Jan 20 18:56:23 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>12 seconds (12010 ms)</td>
+<tr><td>Total time:</td><td>23 seconds (23288 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,7 +76,7 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=locker_out_user}</td>
+<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=locked_out_user}</td>
 <td><div><pre>java.lang.AssertionError: 
 Expecting actual:
   &quot;https://www.saucedemo.com/&quot;
@@ -86,8 +86,39 @@ to contain:
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
 	at java.base/java.lang.Thread.run(Thread.java:1575)
-... Removed 7 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1559287608", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1559287608'><pre>java.lang.AssertionError: 
+... Removed 7 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1328303620", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1328303620'><pre>java.lang.AssertionError: 
+Expecting actual:
+  &quot;https://www.saucedemo.com/&quot;
+to contain:
+  &quot;inventory&quot; 
+	at com.mk.tests.LoginTest.loginTest(LoginTest.java:21)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.TestMethodWithDataProviderMethodWorker.call(TestMethodWithDataProviderMethodWorker.java:81)
+	at org.testng.internal.thread.Async$AsyncTask.run(Async.java:34)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+</pre></div></td>
+<td>1</td>
+<td>com.mk.tests.LoginTest@466276d8</td></tr>
+<tr>
+<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, browser=firefox, count=2, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=locked_out_user}</td>
+<td><div><pre>java.lang.AssertionError: 
+Expecting actual:
+  &quot;https://www.saucedemo.com/&quot;
+to contain:
+  &quot;inventory&quot; 
+	at com.mk.tests.LoginTest.loginTest(LoginTest.java:21)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+... Removed 7 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1595093819", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1595093819'><pre>java.lang.AssertionError: 
 Expecting actual:
   &quot;https://www.saucedemo.com/&quot;
 to contain:
@@ -116,12 +147,12 @@ to contain:
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=problem_user}</td>
+<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=standard_user}</td>
 <td></td>
-<td>0</td>
+<td>1</td>
 <td>com.mk.tests.LoginTest@466276d8</td></tr>
 <tr>
-<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=standard_user}</td>
+<td title='com.mk.tests.LoginTest.loginTest()'><b>loginTest</b><br>Test class: com.mk.tests.LoginTest<br>Parameters: {password=secret_sauce, browser=chrome, count=1, testDescription=To check whether the user can successfully login, priority=1, execute=yes, testName=loginTest, username=problem_user}</td>
 <td></td>
 <td>1</td>
 <td>com.mk.tests.LoginTest@466276d8</td></tr>

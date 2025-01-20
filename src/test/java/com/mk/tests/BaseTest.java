@@ -1,5 +1,7 @@
 package com.mk.tests;
 
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -11,11 +13,14 @@ public class BaseTest {
 	WebDriver driver;
 
 	@BeforeMethod()
-	public void setup() {
-
+	public void setup(Object[] data) {
+		Map<String,String> map = (Map<String,String>) data[0];
+		System.out.println(map.get("browser"));
+		DriverManager.setDriver(map.get("browser"));
 		driver = DriverManager.getDriver();
-		driver.manage().window().maximize();
+		DriverManager.getDriver().get("https://www.saucedemo.com/");
 		driver.get("https://www.saucedemo.com/");
+		
 	}
 
 	@AfterMethod
